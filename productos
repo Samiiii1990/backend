@@ -40,5 +40,53 @@
     "price": 80,
     "thumbnail": "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
     "id": 7
+  },
+  {
+    "title": "Lapiz",
+    "price": 110.5,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
+    "id": 8
+  },
+  {
+    "title": "Lapiz",
+    "price": 110.5,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
+    "id": 9
+  },
+  {
+    "title": "Lapiz",
+    "price": 110.5,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
+    "id": 10
+  },
+  {
+    "title": "Lapiz",
+    "price": 110.5,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
+    "id": 11
+  },
+  {
+    "title": "Lapiz",
+    "price": 110.5,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
+    "id": 12
+  },
+  {
+    "title": "Lapiz",
+    "price": 110.5,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
+    "id": 13
+  },
+  {
+    "title": "Lapiz",
+    "price": 110.5,
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
+    "id": 14
+  },
+  {
+    "title": "Globo Terráqueo",
+    "price": 500,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
+    "id": 15
   }
 ]

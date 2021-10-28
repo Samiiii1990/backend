@@ -42,62 +42,70 @@ router.get("/api/productos", async (req, res) => {
 });
 
 router.get("/api/productos/:id", async (req, res) => {
-  console.log("🚀 ~ file: servidor.js ~ line 45 ~ router.get ~ req", req.params)
-  const {id} = req.params.id;
-
-  const productById = await stock.getById(id);
-
   const error = "producto no encontrado";
-
-  if (!productById) return error;
-
-  res.send(productById);
+  const { id } = req.params;
+  try {
+    const productById = await stock.getById(parseInt(id));
+    res.send(productById);
+    if (!productById) return error;
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.post("/api/productos", async (req, res) => {
+  console.log("🚀 ~ file: servidor.js ~ line 57 ~ router.post ~ req", res)
+  const error = "producto no encontrado";
   const newProduct = {
     title: "Lapiz",
     price: 110.5,
     thumbnail:
       "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
   };
-  const productToAdd = await stock.save(newProduct);
+  try {
+    const productToAdd = await stock.save(newProduct);
 
-  const error = "producto no encontrado";
+    if (!productToAdd) return error;
 
-  if (!productToAdd) return error;
-
-  res.send(productToAdd);
+    res.send(productToAdd);
+  } catch (err) {
+    console.log(err);
+  }
 });
 router.put("/api/productos/:id", async (req, res) => {
-  const {id} = req.params.id;
-  let productToEdit = await stock.getById(id);
-  const editedProduct = {
-    title: "Lapiz",
-    price: 80,
-    thumbnail:
-      "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
-  };
-
-  productToEdit = await stock.save(editedProduct);
-
+  const { id } = req.params;
   const error = "producto no encontrado";
+  const editedProduct = {
+    title: "Globo Terráqueo",
+    price: 500,
+    thumbnail:
+      "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
+  };
+  try {
+    let productToEdit = await stock.getById(parseInt(id));
 
-  if (!productToEdit) return error;
+    productToEdit = await stock.save(editedProduct);
 
-  res.send(productToEdit);
+    if (!productToEdit) return error;
+
+    res.send(productToEdit);
+  } catch (err) {
+    console.log(err);
+  }
 });
 router.delete("/api/productos/:id", async (req, res) => {
-  const id = req.params.id;
-  const productToDelete = await deleteById(id);
-
+  const { id } = req.params;
   const error = "producto no encontrado";
+  try {
+    const productToDelete = await stock.deleteById(parseInt(id));
 
-  if (!productToDelete) return error;
+    if (!productToDelete) return error;
 
-  res.send(productToDelete);
+    res.send(productToDelete);
+  } catch (err) {
+    console.log(err);
+  }
 });
-
 
 app.use("/", router);
 
