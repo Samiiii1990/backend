@@ -1,4 +1,5 @@
 const express = require("express");
+const bp = require("body-parser");
 
 const app = express();
 
@@ -11,6 +12,9 @@ const router = new Router();
 const server = app.listen(PORT, () => {
   console.log(`Servidor http escuchando en el puerto ${server.address().port}`);
 });
+
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
 
 const Contenedor = require("./index");
 
@@ -53,42 +57,25 @@ router.get("/api/productos/:id", async (req, res) => {
   }
 });
 
-router.post("/api/productos", async (req, res) => {
-  console.log("🚀 ~ file: servidor.js ~ line 57 ~ router.post ~ req", res)
-  const error = "producto no encontrado";
-  const newProduct = {
-    title: "Lapiz",
-    price: 110.5,
-    thumbnail:
-      "https://cdn4.iconfinder.com/data/icons/48-bubbles/48/15.Pencil-512.png",
-  };
-  try {
-    const productToAdd = await stock.save(newProduct);
-
-    if (!productToAdd) return error;
-
-    res.send(productToAdd);
-  } catch (err) {
-    console.log(err);
-  }
-});
 router.put("/api/productos/:id", async (req, res) => {
   const { id } = req.params;
-  const error = "producto no encontrado";
-  const editedProduct = {
-    title: "Globo Terráqueo",
-    price: 500,
-    thumbnail:
-      "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
-  };
+  const editedProduct = req.body;
+
   try {
     let productToEdit = await stock.getById(parseInt(id));
 
     productToEdit = await stock.save(editedProduct);
-
-    if (!productToEdit) return error;
-
     res.send(productToEdit);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post("/api/productos", async (req, res) => {
+  const newProduct = req.body;
+  try {
+    const productToAdd = await stock.save(newProduct);
+    res.send(productToAdd);
   } catch (err) {
     console.log(err);
   }
@@ -108,9 +95,5 @@ router.delete("/api/productos/:id", async (req, res) => {
 });
 
 app.use("/", router);
-
-app.use(express.json());
-
-app.use(express.urlencoded({ extended: true }));
 
 server.on("error", (error) => console.log(`Error en servidor ${error}`));
