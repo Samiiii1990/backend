@@ -1,10 +1,14 @@
 {
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
-    "nodemon": "^2.0.14"
+    "jsdom": "^18.0.1",
+    "node-fetch": "^3.0.0",
+    "nodemon": "^2.0.14",
+    "pug": "^3.0.2"
   },
   "name": "curso-backend",
   "version": "1.0.0",

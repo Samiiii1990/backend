@@ -1,27 +1,23 @@
 <h2 style="color:crimson;">Historial</h2>
 
-<% const hayPersonas = personas.length > 0; %>
-<% if(hayPersonas){ %>
+<% const hayProductos = productos.length > 0; %>
+<% if(hayProductos){ %>
 <table>
     <tr style="color: blueviolet;">
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Edad</th>
+        <th>Nombre </th>
+        <th>Precio</th>
     </tr>
-    <% for (const persona of personas) {%>
+    <% for (const producto of productos) {%>
     <tr>
         <td>
-            <%=persona.nombre%>
+            <%=producto.nombre%>
         </td>
         <td>
-            <%=persona.apellido%>
-        </td>
-        <td>
-            <%=persona.edad%>
+            <%=producto.precio%>
         </td>
     </tr>
     <%};%>
 </table>
 <% } else { %>
-<h3>no se encontraron datos</h3>
+<h4>No se encontraron productos</h4>
 <% } %>

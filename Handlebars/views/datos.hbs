@@ -1,15 +1,19 @@
-<table style="width: 70%;" border="1">
-<tbody>
-<tr>
-<td>Id</td>
-<td>Producto</td>
-<td>Precio</td>
-<td>Imagen</td>
-</tr>
-<td>{{id}}</td>
-<td>{{nombre}}</td>
-<td>{{precio}}</td>
-<td>{{imagen}}</td>
-</tr>
-</tbody>
-</table>
+  <table>
+    <thead>
+      <tr>
+
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {{#each productsList as |p|}}
+          <td>{{p.id}}</td>
+          <td>{{p.title}}</td>
+          <td>{{p.price}}</td>
+          {{/each}}
+      </tr>
+    </tbody>
+  </table>

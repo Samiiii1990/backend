@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos</title>
+</head>
+
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+    integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+    crossorigin="anonymous"></script>
+   
+  <span></span>
+  <form  id="form" action="http://localhost:8080/api/productos">
+	<label for="name">
+		<strong>Nombre:</strong>
+		<input type="text" name="name" id="name">
+	</label>
+
+	<label for="description">
+		Descripción:
+		<input type="text" name="description" id="description">
+	</label>
+
+    <label for="price">
+		Precio:
+		<input type="text" name="price" id="price">
+	</label>
+
+	<input type="submit" onclick="postData()" value="Crear Nuevo Producto">
+</form>
+<a class="nav-link" href="http://localhost:8080/">Ver Productos</a>
+<script src="post.js"></script>
+</body>
+
+</html>

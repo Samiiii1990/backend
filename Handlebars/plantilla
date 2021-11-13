@@ -1,0 +1,6 @@
+<h1>Productos</h1>
+<ul>
+  <li>{{name}}</li>
+  <li>{{description}}</li>
+  <li>{{price}}</li>
+</ul>

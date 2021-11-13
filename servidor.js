@@ -2,12 +2,17 @@ const express = require("express");
 const bp = require("body-parser");
 
 const app = express();
-
+var cors = require("cors");
 const PORT = 8080;
 
 const { Router } = express;
 
 const router = new Router();
+app.use(cors());
+
+app.listen(8080, function () {
+  console.log("CORS-enabled web server listening on port 80");
+});
 
 const server = app.listen(PORT, () => {
   console.log(`Servidor http escuchando en el puerto ${server.address().port}`);

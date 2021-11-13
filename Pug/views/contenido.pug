@@ -1,0 +1,13 @@
+extends products
+
+block contenido
+    table
+      thead
+         th id
+         th Nombre
+         th Precio
+            each item in productsList
+                tr
+                    td #{item.id}
+                    td #{item.title}
+                    td #{item.price}

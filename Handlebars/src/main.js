@@ -1,23 +1,32 @@
-const express = require('express')
-const exphbs = require('express-handlebars')
+const Contenedor = require("/home/samanta/Curso Backend/index.js");
 
-const app = express()
+const stock = new Contenedor("productos");
+const express = require("express");
+const app = express();
 
-app.engine('hbs', exphbs({
-  extname: 'hbs',
-  defaultLayout: 'index.hbs'
-}))
+const exphbs = require("express-handlebars");
+var cors = require("cors");
 
-app.set('views', './views')
+app.use(cors());
 
-app.get('/', (req, res) => {
-  res.render('datos.hbs', {
-    nombre: 'coder',
-    apellido: 'house',
-    edad: 25,
-    email: 'coder@house',
-    telefono: '12345678'
+app.listen(8080, function () {
+  console.log("CORS-enabled web server listening on port 8080");
+});
+
+app.engine(
+  "hbs",
+  exphbs({
+    extname: ".hbs",
+    defaultLayout: "index.hbs",
   })
-})
+);
 
-app.listen(8080)
+app.set("views", "../views");
+
+app.get("/", async (req, res) => {
+  const productos = await stock.getAll();
+
+      res.render("datos.hbs", { productsList: productos });
+    
+  
+});
