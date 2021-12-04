@@ -20,13 +20,30 @@ app.engine(
     defaultLayout: "index.hbs",
   })
 );
-
 app.set("views", "../views");
 
+app.post("/api/productos", async (req, res) => {
+  const newProduct = req.body;
+  try {
+    const productToAdd = await stock.save(newProduct);
+    res.send(productToAdd);
+  } catch (err) {
+    console.log(err);
+  }
+});
 app.get("/", async (req, res) => {
+  console.log("sasasasasasasass")
   const productos = await stock.getAll();
 
       res.render("datos.hbs", { productsList: productos });
     
   
+});
+
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
 });

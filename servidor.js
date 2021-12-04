@@ -10,9 +10,9 @@ const { Router } = express;
 const router = new Router();
 app.use(cors());
 
-app.listen(8080, function () {
-  console.log("CORS-enabled web server listening on port 80");
-});
+// app.listen(8080, function () {
+//   console.log("CORS-enabled web server listening on port 80");
+// });
 
 const server = app.listen(PORT, () => {
   console.log(`Servidor http escuchando en el puerto ${server.address().port}`);

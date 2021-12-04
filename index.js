@@ -73,10 +73,21 @@ class Contenedor {
   async save(object) {
     const productos = await this.getAll();
     productos.push(object);
-    productos.forEach((item, i) => {
+   
+    productos && productos.forEach((item, i) => {
         item.id = i + 1;
       });
-      
+    
+      router.post("/api/productos", async (req, res) => {
+  const newProduct = req.body;
+  
+  try {
+    const productToAdd = await stock.save(newProduct);
+    res.send(productToAdd);
+  } catch (err) {
+    console.log(err);
+  }
+});
     try {
       await fs.promises.writeFile(
         this.path,
